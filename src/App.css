@@ -35,5 +35,8 @@
 
 .button-dogs{
   text-align: center;
-  margin: auto
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(139, 136, 139);
 }

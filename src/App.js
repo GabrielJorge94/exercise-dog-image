@@ -24,8 +24,22 @@ class App extends React.Component {
     this.fetchDogs();
   }
 
+  shouldComponentUpdate(_nextProps, nextState) {
+    if (nextState.image.includes('terrier')) {
+      alert('Image invalid, get another dog');
+      return false;
+    }
+    return true;
+  }
+
+  componentDidUpdate() {
+    const { image } = this.state;
+    localStorage.setItem('dogURL', image);
+    const breed = image.split('/')[4];
+    alert(breed);
+  }
+
   handleClick() {
-    this.setState({ ...initialState });
     this.fetchDogs();
   }
 
@@ -59,7 +73,7 @@ class App extends React.Component {
         id="button-dogs"
         onClick={ this.handleClick }
       >
-        Fetch another dog
+        Get another dog
       </button>
     );
   }
